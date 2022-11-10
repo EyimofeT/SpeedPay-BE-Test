@@ -5,8 +5,8 @@ urlpatterns = [
     path('', views.apiOverview , name = "api-overview"),
     path('signup/', views.userCreate , name = "user-create"),
     
-    path('login/', views.userLogin , name = "user-login"),
-    path('logout/',views.logout, name="logout"),
+    # path('login/', views.userLogin , name = "user-login"),
+    # path('logout/',views.logout, name="logout"),
     
     path('accountdetails/', views.accountdetails, name="account_details"),
     

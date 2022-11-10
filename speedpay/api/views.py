@@ -91,51 +91,6 @@ def userCreate(request):
     return Response(response)
 
 
-@api_view(['POST'])
-def logout(request):
-    response = Response()
-    response.delete_cookie('jwt')
-    response.data = {
-         "status": 200,
-        'Message': 'Logout Successful'
-    }
-    return response
-
-
-@api_view(['POST'])
-def userLogin(request):
-
-    username_input = request.data['username']
-    password_input = request.data['password']
-    user = User.objects.filter(username=username_input).first()
-    user_serializer = UserSerializer(user, many=False)
-
-    if user is None:
-        raise AuthenticationFailed("User not Found!")
-
-    if not user.check_password(password_input):
-        raise AuthenticationFailed("Incorrect Password!")
-
-    payload = {
-        'id': user.id,
-        'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=60),
-        'iat': datetime.datetime.utcnow(),
-        "is_superuser": user.is_superuser,
-
-    }
-    token = jwt.encode(payload, 'secret', algorithm='HS256')
-    # .decode('utf-8')
-
-    response = Response()
-    response.set_cookie(key='jwt', value=token, httponly=True)
-    response.data = {
-        "Message": "Login Successful",
-        "Status": 200,
-        'jwt': token
-    }
-
-    # return Response(user_serializer.data)
-    return response
 
 
 @api_view(['GET'])
