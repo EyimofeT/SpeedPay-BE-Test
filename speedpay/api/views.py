@@ -22,8 +22,8 @@ import datetime
 def apiOverview(request):
     list = {
         "User SignUp": "/api/signup/",
-        "User LogIn": '/api/login/',
-         "User LogOut": '/api/logout/',
+        "User LogIn": '/api/authentication/login/',
+        "User LogOut": '/api/authentication/logout/',
         "User Deposit": "/api/userdeposit/",
         "Users Withdrawal": '/api/withdrawal/',
         "Users Account Details": '/api/accountdetails/',

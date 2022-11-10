@@ -38,7 +38,7 @@ def logout(request):
 @api_view(['POST'])
 def userLogin(request):
 
-    username_input = request.data['username']
+    username_input = request.data['username'].lower()
     password_input = request.data['password']
     user = User.objects.filter(username=username_input).first()
     user_serializer = UserSerializer(user, many=False)
