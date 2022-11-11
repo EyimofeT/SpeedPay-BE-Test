@@ -27,8 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 import os
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-STATIC_ROOT =os.path.join(BASE_DIR, 'staticfiles')
+import django_heroku
+
+
 
 
 # Application definition
@@ -145,3 +146,4 @@ AUTH_USER_MODEL = 'api.User'
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
+django_heroku.settings(locals())
