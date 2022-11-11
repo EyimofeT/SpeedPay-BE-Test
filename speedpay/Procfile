@@ -1,1 +1,1 @@
-web: gunicorn speedpay.wsgi
+web: python manage.py migrate --run-syncdb && python manage.py migrate && gunicorn speedpay.wsgi
